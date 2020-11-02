@@ -19,40 +19,60 @@ function updateStructure(rec1,rec2){
 	const right2    = rec2['right']   !=null   ? rec2['right']  : (rec2['width']  + rec2['left']);
 
 	if(top1<top2 && bottom1>bottom2 && left1<left2 && right1>right2){
+		result = {
+
+		}
 		para = ['top','left','right',"bottom1"]
 		for(let i=0;i<para.length;i++){
 			if(rec2[para[i]]!=null){
-				rec2[para[i]] = rec2[para[i]] - rec1[para[i]];
+				result[para[i]] = rec2[para[i]] - rec1[para[i]];
 			}
 		}
-		rec1.children.push(rec2);
+		if(rec2['height']!=null){
+			result['height'] = rec2['height'];
+		}
+		if(rec2['width']!=null){
+			result['width'] = rec2['width'];
+		}
+		result['children'] = rec2.children;
+		result['position'] = rec2.position;
+		rec1.children.push(result);
 		return rec1
 	}
 	if(top1>top2 && bottom1<bottom2 && left1>left2 && right1<right2){
+		result ={}
 		para = ['top','left','right',"bottom1"]
 		for(let i=0;i<para.length;i++){
 			if(rec1[para[i]]!=null){
-				rec1[para[i]] = rec1[para[i]] - rec1[para[i]];
+				result[para[i]] = rec1[para[i]] - rec2[para[i]];
 			}
 		}
-		rec2.children.push(rec1);
-		return rec1
+		if(rec1['height']!=null){
+			result['height'] = rec1['height'];
+		}
+		if(rec1['width']!=null){
+			result['width'] = rec1['width'];
+		}
+		result['children'] = rec1.children;
+		result['position'] = rec1.position;
+		rec2.children.push(result);
+		return rec2
 	}
 }
 
 module.exports = updateStructure;
 
 /*
- RectangleA:
+let RectangleA=
 {
 	top:20, left:20, height:40, width:60,
-	position:absolute,
+	position:"absolute",
 	children:[]
-}
-RectangleB:
+};
+let RectangleB=
 { 
 	top:30, left:30, height:20,width:30,
-	position:absolute,
+	position:"absolute",
 	children:[]
 }
 
