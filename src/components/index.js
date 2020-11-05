@@ -7,8 +7,8 @@
 
 
 function updateStructure(rect1,rect2){
-	let rec1 = JSON.parse(JSON.stringify(rect1));
-	let rec2 = JSON.parse(JSON.stringify(rect2));
+	let rec1 = {...rect1};//JSON.parse(JSON.stringify(rect1));
+	let rec2 = {...rect1};//JSON.parse(JSON.stringify(rect2));
 	//write your code
 	const top1     = rec1['top']    !=null ? rec1['top']    : (rec1['bottom'] - rec1['height']);
 	const left1    = rec1['left']   !=null ? rec1['left']   : (rec1['right']  - rec1['width']);
