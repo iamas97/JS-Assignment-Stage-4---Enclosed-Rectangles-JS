@@ -19,7 +19,7 @@ function updateStructure(rect1,rect2){
 	const bottom2  = rec2['bottom'] !=null ? rec2['bottom'] : (rec2['height'] + rec2['top']);
 	const right2   = rec2['right']  !=null ? rec2['right']  : (rec2['width']  + rec2['left']);
 	const para = ['top','left','right',"bottom1"]
-	if((top1<top2 && bottom1>bottom2 && left1<left2 && right1>right2 )||(top1==top2 && bottom1==bottom2 && left1==left2 && right1==right2)){
+	if((top1<=top2 && bottom1>=bottom2 && left1<=left2 && right1>=right2 )||(top1==top2 && bottom1==bottom2 && left1==left2 && right1==right2)){
 		
 		for(let i=0;i<para.length;i++){
 			if(rec2[para[i]]!=null){
