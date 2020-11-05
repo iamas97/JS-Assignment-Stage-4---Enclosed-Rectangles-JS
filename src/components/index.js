@@ -46,28 +46,28 @@ function updateStructure(rect1,rect2){
 	return null;
 }
 
-// module.exports = updateStructure;
+module.exports = updateStructure;
 
-let RectangleA=
-{
-	top:20, left:20, height:40, width:60,
-	position:"absolute",
-	children:[]
-};
-let RectangleB=
-{
-	top:0, left:20, height:40, width:70,
-	position:"relative",
-	children:[]
-};
+// let RectangleA=
+// {
+// 	top:20, left:20, height:40, width:60,
+// 	position:"absolute",
+// 	children:[]
+// };
+// let RectangleB=
+// {
+// 	top:0, left:20, height:40, width:70,
+// 	position:"relative",
+// 	children:[]
+// };
 // let RectangleB=
 // { 
 // 	top:30, left:30, height:20,width:30,
 // 	position:"absolute",
 // 	children:[]
 // }
-console.log(updateStructure(RectangleB,RectangleA));
-console.log("rect b",RectangleB);
+// console.log(updateStructure(RectangleB,RectangleA));
+// console.log("rect b",RectangleB);
 
 // let RectangleA={ 
 // 	top:20, left:20, height:40, width:60,
