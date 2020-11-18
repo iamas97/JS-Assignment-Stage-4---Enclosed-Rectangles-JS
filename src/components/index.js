@@ -105,8 +105,17 @@ function updateStructure(rect1, rect2) {
   const allTrue = (rec1, rec2) => {
     const gte = (a, b) => a >= b;
     const lte = (a, b) => a <= b;
-    const isTrue = (r1, r2, prop, fn) =>
-      r1[prop] == null || fn(r1[prop], r2[prop]);
+    const isTrue = (r1, r2, prop, fn) =>{
+      let size = {"height":["bottom","top"],"width":["left","right"]};
+      if(prop in size){
+        let prop2 = r1[size[prop][0]] ? size[prop][0] : size[prop][1];
+        return r1[prop] == null || fn(r1[prop]+r1[prop2], r2[prop]+r2[prop2]);
+      
+      }
+      return r1[prop] == null || fn(r1[prop], r2[prop]);
+
+
+    }
     return (
       isTrue(rec1, rec2, "top", lte) &&
       isTrue(rec1, rec2, "left", lte) &&
