@@ -5,59 +5,59 @@
 //	height: '96px'
 //}
 
-function updateStructure(rect1, rect2) {
-  let rec1 = JSON.parse(JSON.stringify(rect1));
-  let rec2 = JSON.parse(JSON.stringify(rect2));
-  //write your code
-  const top1 =
-    rec1["top"] != null ? rec1["top"] : rec1["bottom"] - rec1["height"];
-  const left1 =
-    rec1["left"] != null ? rec1["left"] : rec1["right"] - rec1["width"];
-  const bottom1 =
-    rec1["bottom"] != null ? rec1["bottom"] : rec1["height"] + rec1["top"];
-  const right1 =
-    rec1["right"] != null ? rec1["right"] : rec1["width"] + rec1["left"];
-  console.log(top1, left1, bottom1, right1, "Value1");
-  const top2 =
-    rec2["top"] != null ? rec2["top"] : rec2["bottom"] - rec2["height"];
-  const left2 =
-    rec2["left"] != null ? rec2["left"] : rec2["right"] - rec2["width"];
-  const bottom2 =
-    rec2["bottom"] != null ? rec2["bottom"] : rec2["height"] + rec2["top"];
-  const right2 =
-    rec2["right"] != null ? rec2["right"] : rec2["width"] + rec2["left"];
-  console.log(top2, left2, bottom2, right2, "Value2");
-  const para = ["top", "left", "right", "bottom"];
-  if (
-    (top1 <= top2 &&
-      bottom1 >= bottom2 &&
-      left1 <= left2 &&
-      right1 >= right2)
-  ) {
+// function updateStructure(rect1, rect2) {
+//   let rec1 = JSON.parse(JSON.stringify(rect1));
+//   let rec2 = JSON.parse(JSON.stringify(rect2));
+//   //write your code
+//   const top1 =
+//     rec1["top"] != null ? rec1["top"] : rec1["bottom"] - rec1["height"];
+//   const left1 =
+//     rec1["left"] != null ? rec1["left"] : rec1["right"] - rec1["width"];
+//   const bottom1 =
+//     rec1["bottom"] != null ? rec1["bottom"] : rec1["height"] + rec1["top"];
+//   const right1 =
+//     rec1["right"] != null ? rec1["right"] : rec1["width"] + rec1["left"];
+//   console.log(top1, left1, bottom1, right1, "Value1");
+//   const top2 =
+//     rec2["top"] != null ? rec2["top"] : rec2["bottom"] - rec2["height"];
+//   const left2 =
+//     rec2["left"] != null ? rec2["left"] : rec2["right"] - rec2["width"];
+//   const bottom2 =
+//     rec2["bottom"] != null ? rec2["bottom"] : rec2["height"] + rec2["top"];
+//   const right2 =
+//     rec2["right"] != null ? rec2["right"] : rec2["width"] + rec2["left"];
+//   console.log(top2, left2, bottom2, right2, "Value2");
+//   const para = ["top", "left", "right", "bottom"];
+//   if (
+//     (top1 <= top2 &&
+//      bottom1 >= bottom2 &&
+//      left1 <= left2 &&
+//      right1 >= right2)
+//   ) {
     
-    for (let i = 0; i < para.length; i++) {
-      if (rec2[para[i]] != null) {
-        console.log("here in cond 2");
-        rec2[para[i]] = rec2[para[i]] - rec1[para[i]];
-      }
-    }
+//     for (let i = 0; i < para.length; i++) {
+//       if (rec2[para[i]] != null) {
+//         console.log("here in cond 2");
+//         rec2[para[i]] = rec2[para[i]] - rec1[para[i]];
+//       }
+//     }
 
-    rec1.children.push(rec2);
-    return rec1;
-  }
-  if (top1 >= top2 && bottom1 <= bottom2 && left1 >= left2 && right1 <= right2) {
-    for (let i = 0; i < para.length; i++) {
-      if (rec1[para[i]] != null) {
-        rec1[para[i]] = rec1[para[i]] - rec2[para[i]];
-      }
-    }
+//     rec1.children.push(rec2);
+//     return rec1;
+//   }
+//   else if (top1 >= top2 && bottom1 <= bottom2 && left1 >= left2 && right1 <= right2) {
+//     for (let i = 0; i < para.length; i++) {
+//       if (rec1[para[i]] != null) {
+//         rec1[para[i]] = rec1[para[i]] - rec2[para[i]];
+//       }
+//     }
 
-    rec2.children.push(rec1);
-    return rec2;
-  }
-  console.log("here in return");
-  return null;
-}
+//     rec2.children.push(rec1);
+//     return rec2;
+//   }
+//   console.log("here in return");
+//   return null;
+// }
 
 // function updateStructure(rect1, rect2) {
 //   let rec1 = { ...rect1 }; //JSON.parse(JSON.stringify(rect1));
@@ -98,58 +98,58 @@ function updateStructure(rect1, rect2) {
   // 	return found;
   // }
 //   }
-// function updateStructure(rect1, rect2) {
-// 	let rec1 = JSON.parse(JSON.stringify(rect1)); 
-// 	let rec2 = JSON.parse(JSON.stringify(rect2)); 
-//   const allTrue = (rec1, rec2) => {
-//     const gte = (a, b) => a >= b;
-//     const lte = (a, b) => a <= b;
-//     const isTrue = (r1, r2, prop, fn) =>{
-//       let size = {"height":["bottom","top"],"width":["left","right"]};
-//       if(prop in size){
-//         let prop2 = r1[size[prop][0]] ? size[prop][0] : size[prop][1];
-//         return r1[prop] == null || fn(r1[prop]+r1[prop2], r2[prop]+r2[prop2]);
+function updateStructure(rect1, rect2) {
+	let rec1 = JSON.parse(JSON.stringify(rect1)); 
+	let rec2 = JSON.parse(JSON.stringify(rect2)); 
+  const allTrue = (rec1, rec2) => {
+    const gte = (a, b) => a >= b;
+    const lte = (a, b) => a <= b;
+    const isTrue = (r1, r2, prop, fn) =>{
+      let size = {"height":["bottom","top"],"width":["left","right"]};
+      if(prop in size){
+        let prop2 = r1[size[prop][0]] ? size[prop][0] : size[prop][1];
+        return r1[prop] == null || fn(r1[prop]+r1[prop2], r2[prop]+r2[prop2]);
       
-//       }
-//       return r1[prop] == null || fn(r1[prop], r2[prop]);
+      }
+      return r1[prop] == null || fn(r1[prop], r2[prop]);
 
 
-//     }
-//     return (
-//       isTrue(rec1, rec2, "top", lte) &&
-//       isTrue(rec1, rec2, "left", lte) &&
-//       isTrue(rec1, rec2, "right", lte) &&
-//       isTrue(rec1, rec2, "bottom", lte) &&
-//       isTrue(rec1, rec2, "height", gte) &&
-//       isTrue(rec1, rec2, "width", gte)
-//     );
-//   };
-//   const para = ["top", "left", "right", "bottom"];
-//   if (allTrue(rec1, rec2)) {
-//     // console.log("here in cond 1");
-//     for (let i = 0; i < para.length; i++) {
-//       if (rec2[para[i]] != null) {
-//         // console.log("here in cond 2");
-//         rec2[para[i]] = rec2[para[i]] - rec1[para[i]];
-//       }
-//     }
+    }
+    return (
+      isTrue(rec1, rec2, "top", lte) &&
+      isTrue(rec1, rec2, "left", lte) &&
+      isTrue(rec1, rec2, "right", lte) &&
+      isTrue(rec1, rec2, "bottom", lte) &&
+      isTrue(rec1, rec2, "height", gte) &&
+      isTrue(rec1, rec2, "width", gte)
+    );
+  };
+  const para = ["top", "left", "right", "bottom"];
+  if (allTrue(rec1, rec2)) {
+    // console.log("here in cond 1");
+    for (let i = 0; i < para.length; i++) {
+      if (rec2[para[i]] != null) {
+        // console.log("here in cond 2");
+        rec2[para[i]] = rec2[para[i]] - rec1[para[i]];
+      }
+    }
 
-//     rec1.children.push(rec2);
-//     return rec1;
-//   }
-//   if (allTrue(rec2,rec1)) {
-//     for (let i = 0; i < para.length; i++) {
-//       if (rec1[para[i]] != null) {
-//         rec1[para[i]] = rec1[para[i]] - rec2[para[i]];
-//       }
-//     }
+    rec1.children.push(rec2);
+    return rec1;
+  }
+  if (allTrue(rec2,rec1)) {
+    for (let i = 0; i < para.length; i++) {
+      if (rec1[para[i]] != null) {
+        rec1[para[i]] = rec1[para[i]] - rec2[para[i]];
+      }
+    }
 
-//     rec2.children.push(rec1);
-//     return rec2;
-//   }
-//   // console.log("here in return");
-//   return null;
-// }
+    rec2.children.push(rec1);
+    return rec2;
+  }
+  // console.log("here in return");
+  return null;
+}
 // let RectangleA=
 // {
 // 	top:20, left:20, height:40, width:60,
