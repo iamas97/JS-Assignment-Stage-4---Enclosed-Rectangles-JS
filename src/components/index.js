@@ -148,7 +148,7 @@ function updateStructure(rect1, rect2) {
     return rec2;
   }
   // console.log("here in return");
-  return null;
+  return rect1;
 }
 // let RectangleA=
 // {
