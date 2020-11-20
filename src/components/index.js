@@ -99,8 +99,8 @@
   // }
 //   }
 function updateStructure(rect1, rect2) {
-	let rec1 = JSON.parse(JSON.stringify(rect1)); 
-	let rec2 = JSON.parse(JSON.stringify(rect2)); 
+	let rec1 = {...rect1}; / JSON.parse(JSON.stringify(rect1)); 
+	let rec2 = {...rect2}; / JSON.parse(JSON.stringify(rect2)); 
   const allTrue = (rec1, rec2) => {
     const gte = (a, b) => a >= b;
     const lte = (a, b) => a <= b;
