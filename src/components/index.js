@@ -48,7 +48,7 @@ function updateStructure(rect1, rect2) {
     return rec2;
   }
   // console.log("here in return");
-  return rect1;
+  return rec1;
 }
 
 module.exports = updateStructure;
