@@ -8,10 +8,11 @@ function updateStructure(rect1, rect2) {
       let size = {"height":["bottom","top"],"width":["left","right"]};
       if(prop in size){
         let prop2 = r1[size[prop][0]] ? size[prop][0] : size[prop][1];
-        return r1[prop] == null || fn(parseInt(r1[prop])+parseInt(r1[prop2]), r2[prop]+parseInt(r2[prop2]));
+        return r1[prop] == null || fn(
+          parseInt(r1[prop])+parseInt(r1[prop2]), parseInt(r2[prop])+parseInt(r2[prop2]));
       
       }
-      return r1[prop] == null || fn(parseInt(r1[prop]), r2[prop]+parseInt(r2[prop2]));
+      return r1[prop] == null || fn(parseInt(r1[prop]), parseInt(r2[prop]));
 
 
     }
