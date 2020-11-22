@@ -8,10 +8,10 @@ function updateStructure(rect1, rect2) {
       let size = {"height":["bottom","top"],"width":["left","right"]};
       if(prop in size){
         let prop2 = r1[size[prop][0]] ? size[prop][0] : size[prop][1];
-        return r1[prop] == null || fn(r1[prop]+r1[prop2], r2[prop]+r2[prop2]);
+        return r1[prop] == null || fn(parseInt(r1[prop])+parseInt(r1[prop2]), r2[prop]+parseInt(r2[prop2]));
       
       }
-      return r1[prop] == null || fn(r1[prop], r2[prop]);
+      return r1[prop] == null || fn(parseInt(r1[prop]), r2[prop]+parseInt(r2[prop2]));
 
 
     }
@@ -30,7 +30,7 @@ function updateStructure(rect1, rect2) {
     for (let i = 0; i < para.length; i++) {
       if (rec2[para[i]] != null) {
         // console.log("here in cond 2");
-        rec2[para[i]] = rec2[para[i]] - rec1[para[i]];
+        rec2[para[i]] = (parseInt(rec2[para[i]]) - parseInt(rec1[para[i]]))+"px" ;
       }
     }
 
@@ -40,7 +40,8 @@ function updateStructure(rect1, rect2) {
   if (allTrue(rec2,rec1)) {
     for (let i = 0; i < para.length; i++) {
       if (rec1[para[i]] != null) {
-        rec1[para[i]] = rec1[para[i]] - rec2[para[i]];
+        rec1[para[i]] = (parseInt(rec1[para[i]]) - parseInt(rec2[para[i]]))+"px" ;
+
       }
     }
 
